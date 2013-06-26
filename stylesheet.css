@@ -95,7 +95,16 @@ h2 {
 }
 
 .loans {
+	cursor: pointer;
 	font-size: 16px;
+}
+
+.loans:hover {
+	color: #4b9123;
+}
+
+.loans:active {
+	color: #4b9123;
 }
 
 #refresh {
