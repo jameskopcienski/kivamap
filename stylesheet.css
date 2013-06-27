@@ -103,7 +103,7 @@ h2 {
 	color: #4b9123;
 }
 
-.loans:active {
+.selected {
 	color: #4b9123;
 }
 
@@ -120,4 +120,12 @@ h2 {
 	margin: 0 auto;
 }
 
+.winTitle {
+	text-align: center;
+  text-decoration: underline;
+}
+
+.winName {
+  font-style: italic;
+}
 
