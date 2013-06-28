@@ -121,7 +121,7 @@ jQuery(function($) {
         $('#refresh').hide();
       },
       complete: function() {                      //display list header
-        $('h2').text('Here are ten of the most recent loans made on Kiva. Choose one to display it on the map.');
+        $('h2').html('Here are ten of the most recent loans made on Kiva.<br>Choose one to display it on the map, then click on a green marker to see more information.');
       },
       success: function(recentLoans) {
         console.log(recentLoans);
