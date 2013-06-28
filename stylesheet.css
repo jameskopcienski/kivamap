@@ -54,8 +54,15 @@ body {
 	background-color: #c2e5a2;
 }
 
+.logo {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
 h1 {
   font-size: 28px;
+	font-weight: 200;
   text-align: center;
   margin-top: 20px;
 }
@@ -70,22 +77,24 @@ h1 {
 }
 
 #container {
-	width: 1100px;
+	width: 1114px;
 	margin-top: 30px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 #recent {
-	margin-top: 30px;
-	margin-left: auto;
-	margin-right: auto;
-	border: 1px solid #ccc;
+	border: 2px solid #74b446;
 	border-radius: 10px;
-	box-shadow: 1px 1px 4px #ccc;
 	padding: 5px;
 	width: 1100px;
+  line-height: 1.3;
 	background-color: #fff;
+}
+
+#recent li {
+  text-indent: -1.5em;
+  margin-left: 1.5em;
 }
 
 h2 {
@@ -120,12 +129,22 @@ h2 {
 	margin: 0 auto;
 }
 
-.winTitle {
+.wintitle {
 	text-align: center;
   text-decoration: underline;
+	padding-bottom: 5px;
 }
 
-.winName {
+.winname {
   font-style: italic;
+}
+
+.winloc {
+	padding-bottom: 5px;
+}
+
+.wincaption {
+	padding: 5px 0;
+	font-size: 14px;
 }
 
