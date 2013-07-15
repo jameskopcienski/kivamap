@@ -69,20 +69,20 @@ jQuery(function($) {
         });
         mapArray.push(loanLine, lenderMarker, borrowerMarker); //save map data for later clearing
         
-        var lenderString = '<div id="lenderWindow">' +       //pop-up windows
+        var lenderString = '<div id="lenderWindow" class="popwindow">' +       //pop-up windows
                           '<p class="wintitle">Lender</p>' +
                           '<p class="winname">' + lenderName + '</p>' +
                           '<p class="winloc">' + lenderLocation + '</p>' +
                           '<a href="http://www.kiva.org/lender/' + lenderId + '" target="_blank"><img src="http://www.kiva.org/img/w200h200/' + lenderImage + '.jpg"></a>' +
-                          '<p class="wincaption">Click photo for more info on kiva.org</p>' +
+                          '<p class="wincaption">Click photo for more info about this lender on kiva.org</p>' +
                           '</div>';
   
-        var borrowerString = '<div id="borrowerWindow">' +
+        var borrowerString = '<div id="borrowerWindow" class="popwindow">' +
                           '<p class="wintitle">Borrower</p>' +
                           '<p class="winname">' + borrowerName + '</p>' +
                           '<p class="winloc">' + borrowerCountry + '</p>' +
                           '<a href="http://www.kiva.org/lend/' + borrowerId + '" target="_blank"><img src="http://www.kiva.org/img/w200h200/' + borrowerImage + '.jpg"></a>' +
-                          '<p class="wincaption">Click photo for more info on kiva.org</p>' +
+                          '<p class="wincaption">Click photo for more info about this borrower on kiva.org</p>' +
                           '</div>';
   
         var lenderWindow = new google.maps.InfoWindow({
@@ -132,17 +132,19 @@ jQuery(function($) {
           var lenderId = ' data-lenid="' + recentLoans.lending_actions[i].lender.lender_id + '"';
           if ((lenWhere !== "") && (lenderId !== prevLender) && (listNum < 10)) {    //skip lenders with no location and repeat lenders; limit list to 10 items
             
-            var lenderName = ' data-lenname="' + recentLoans.lending_actions[i].lender.name + '"';     //data to load into each link
+            var lenName = recentLoans.lending_actions[i].lender.name;
+            var lenderName = ' data-lenname="' + lenName + '"';     //data to load into each link
             var lenderLocation = ' data-lenloc="' + lenWhere + '"';
             var lenderImage = ' data-lenimage="' + recentLoans.lending_actions[i].lender.image.id + '"';
             var borrowerId = ' data-borid="' + recentLoans.lending_actions[i].loan.id + '"';
-            var borrowerName = ' data-borname="' + recentLoans.lending_actions[i].loan.name + '"';
+            var borName = recentLoans.lending_actions[i].loan.name;
+            var borrowerName = ' data-borname="' + borName + '"';
             var borrowerLocation = ' data-borloc="' + recentLoans.lending_actions[i].loan.location.geo.pairs + '"';
             var borrowerCountry = ' data-borcntry="' + recentLoans.lending_actions[i].loan.location.country + '"';
             var borrowerImage = ' data-borimage="' + recentLoans.lending_actions[i].loan.image.id + '"';
-            var loanDesc = recentLoans.lending_actions[i].loan.activity + ": " + recentLoans.lending_actions[i].loan.use;
+            var loanDesc = recentLoans.lending_actions[i].loan.use;
             
-            $('#recentlist').append('<a class="loans"' + borrowerId + borrowerName + borrowerLocation + borrowerCountry + borrowerImage + lenderId + lenderName + lenderLocation + lenderImage + '><li>' + loanDesc + '</li></a>'); //use data- to send data to displayMap function
+            $('#recentlist').append('<a class="loans"' + borrowerId + borrowerName + borrowerLocation + borrowerCountry + borrowerImage + lenderId + lenderName + lenderLocation + lenderImage + '><li><span>' + lenName + '</span> made a loan to <span>' + borName + '</span> ' + loanDesc + '</li></a>'); //use data- to send data to displayMap function
 
             listNum++;
             prevLender = lenderId;

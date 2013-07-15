@@ -67,6 +67,18 @@ h1 {
   margin-top: 20px;
 }
 
+#intro {
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 2px solid #74b446;
+	border-radius: 10px;
+	padding: 5px;
+	width: 950px;
+  line-height: 1.3;
+	background-color: #fff;
+}
+
 #loanmap {
 	height: 500px;
 	width: 950px;
@@ -108,6 +120,10 @@ h2 {
 	font-size: 16px;
 }
 
+.loans span {
+	font-style: italic;
+}
+
 .loans:hover {
 	color: #4b9123;
 }
@@ -129,6 +145,10 @@ h2 {
 	margin: 0 auto;
 }
 
+.popwindow {
+	width: 200px;
+}
+
 .wintitle {
 	text-align: center;
   text-decoration: underline;
@@ -144,7 +164,7 @@ h2 {
 }
 
 .wincaption {
-	padding: 5px 0;
+	padding-top: 5px;
 	font-size: 14px;
 }
 
