@@ -9,7 +9,7 @@ jQuery(function($) {
       zoom: 2,
       center: new google.maps.LatLng(0, 0),
       mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
+    };
     map = new google.maps.Map(document.getElementById('loanmap'), mapOptions);
   }
   
@@ -26,7 +26,6 @@ jQuery(function($) {
     var borrowerLocation = $(this).data('borloc');
     var borrowerCountry = $(this).data('borcntry');
     var borrowerImage = $(this).data('borimage');
-    console.log(borrowerLocation, lenderLocation);
 
     geocoder.geocode( { 'address': lenderLocation}, function(results, status) {  //get lender geo coordinates; returns as an object
       if (status == google.maps.GeocoderStatus.OK) {
@@ -36,12 +35,10 @@ jQuery(function($) {
             mapArray[i].setMap(null);
           }
         }
-        console.log(results);
 
-        var lenderLatLng = new google.maps.LatLng(results[0].geometry.location.lb, results[0].geometry.location.mb);
+        var lenderLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
         var borLatLng = new google.maps.LatLng(borrowerLocation.split(' ')[0], borrowerLocation.split(' ')[1]);          //split borrower geo coordinates string into latitude and longitude
         var loanLineCoordinates = [lenderLatLng, borLatLng];                      //set coordinates for polyline
-        console.log(lenderLatLng, borLatLng);
 
         var loanLine = new google.maps.Polyline({            //set properties for line between lender and borrower
           path: loanLineCoordinates,
@@ -127,7 +124,6 @@ jQuery(function($) {
         $('h2').html('Here are ten of the most recent loans made on Kiva.<br>Choose one to display it on the map, then click on a green marker to see more information.');
       },
       success: function(recentLoans) {
-        console.log(recentLoans);
         var listNum = 0;
         var prevLender = "";
         for (var i = 0; i < 100; i++) {   //array contains 100 objects
