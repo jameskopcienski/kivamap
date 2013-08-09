@@ -26,6 +26,7 @@ jQuery(function($) {
     var borrowerLocation = $(this).data('borloc');
     var borrowerCountry = $(this).data('borcntry');
     var borrowerImage = $(this).data('borimage');
+    console.log(borrowerLocation, lenderLocation);
 
     geocoder.geocode( { 'address': lenderLocation}, function(results, status) {  //get lender geo coordinates; returns as an object
       if (status == google.maps.GeocoderStatus.OK) {
@@ -35,10 +36,12 @@ jQuery(function($) {
             mapArray[i].setMap(null);
           }
         }
+        console.log(results);
 
-        var lenderLatLng = new google.maps.LatLng(results[0].geometry.location.jb, results[0].geometry.location.kb);
+        var lenderLatLng = new google.maps.LatLng(results[0].geometry.location.lb, results[0].geometry.location.mb);
         var borLatLng = new google.maps.LatLng(borrowerLocation.split(' ')[0], borrowerLocation.split(' ')[1]);          //split borrower geo coordinates string into latitude and longitude
         var loanLineCoordinates = [lenderLatLng, borLatLng];                      //set coordinates for polyline
+        console.log(lenderLatLng, borLatLng);
 
         var loanLine = new google.maps.Polyline({            //set properties for line between lender and borrower
           path: loanLineCoordinates,
