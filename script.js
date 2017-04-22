@@ -110,7 +110,7 @@ jQuery(function($) {
   function showLoans() {
     initialize();
     $.ajax({
-      url: 'http://api.kivaws.org/v1/lending_actions/recent.json',
+      url: 'https://api.kivaws.org/v1/lending_actions/recent.json',
       dataType: 'jsonp',
       jsonp: 'jsonp',
       cache: false,
